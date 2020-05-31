@@ -1,26 +1,19 @@
 <template>
   <div>
-    <keep-alive>
-    <component :is="component"></component>
-    </keep-alive>
-    <button v-on:click="component = 'form-one'">Show form one</button>
-    <button v-on:click="component = 'form-two'">Show form two</button>
+    <add-blog></add-blog>
   </div>
 </template>
 
 <script>
-import formOne from './components/formOne'
-import formTwo from './components/formTwo'
+import addBlog from './components/addBlog'
 
 export default {
   name: 'App',
   components: {
-    'form-one': formOne,
-    'form-two': formTwo
+    'add-blog': addBlog
   },
   data() {
     return {
-      component: 'form-one'
     }
   },
   methods: {
@@ -29,4 +22,7 @@ export default {
 </script>
 
 <style>
+body {
+  margin: 0;
+}
 </style>
