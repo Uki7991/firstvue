@@ -4,7 +4,7 @@
 
         <div v-show="!loading" id="single-blog">
             <h1>{{ blog.title }}</h1>
-            <article>{{ blog.body }}</article>
+            <article>{{ blog.content }}</article>
         </div>
     </div>
 </template>
@@ -19,11 +19,12 @@ export default {
         }
     },
     created() {
-        this.$http.get('https://jsonplaceholder.typicode.com/posts/' + this.id)
+        this.$http.get('https://vue-project-45a3e.firebaseio.com/posts/' + this.id + '.json')
             .then(data => {
+                return data.json();
+            }).then(data => {
+                this.blog = data;
                 this.loading = false
-                console.log(data)
-                this.blog = data.body
             })
     }
 }
